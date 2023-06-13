@@ -22,7 +22,7 @@ public class TestBase {
 
     @AfterSuite
     public void tearDown(){
-          wd.quit();
+        //  wd.quit();
     }
 
     public void click(By locator){
@@ -30,6 +30,7 @@ public class TestBase {
     }
 
     public void openLoginRegistrationForm(){
+
         click(By.xpath("//*[text()='LOGIN']"));
     }
 
@@ -46,10 +47,12 @@ public class TestBase {
     }
 
     public void submitLogin(){
+
         click(By.xpath("//button[1]"));
     }
 
     public boolean isElementPresent(By locator){
+
         return wd.findElements(locator).size() > 0;
     }
 
@@ -62,16 +65,18 @@ public class TestBase {
     }
 
     public boolean isLogged(){
+
         return isElementPresent(By.xpath("//*[text()='Sign Out']"));
     }
 
     public void logout(){
+
         click(By.xpath("//*[text()='Sign Out']"));
     }
 
 
     public void submitRegistration(){
-
+        click(By.xpath("//button[2]"));
     }
 
 }

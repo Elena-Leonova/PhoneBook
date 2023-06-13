@@ -75,9 +75,6 @@ public class loginTest extends TestBase {
         // Assert
     }
 
-    @AfterMethod
-    public void tearDown() {
-        //  wd.quit();
-    }
+
 
 }
