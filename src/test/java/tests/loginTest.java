@@ -1,8 +1,5 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -22,8 +19,13 @@ public class loginTest extends TestBase {
 //        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //    }
 
-//    @Test
-//    public void loginPositiveTest() {
+   @Test
+   public void loginPositiveTest() {
+        String email = "lena.postrash@gmail.com", password = "Mynameislena1!";
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(email,password);
+        app.getUser().submitLogin();
+   }
 //        // open login form
 //        wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
 //        // fill login form

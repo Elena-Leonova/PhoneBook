@@ -1,9 +1,5 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,9 +12,13 @@ public class RegistrationTest extends TestBase{
         }
     }
 
-//        @Test
-//        public void registrationPositiveTest() {
-//           int i = (int) (System.currentTimeMillis() / 1000) % 3600;
+        @Test
+        public void registrationPositiveTest() {
+            int i = (int) (System.currentTimeMillis() / 1000) % 3600;
+            String email = "lena.postrash" + i + "@gmail.com", password = "Mynameislena1!";
+            app.getUser().openLoginRegistrationForm();
+            app.getUser().fillLoginRegistrationForm(email, password);
+            app.getUser().submitRegistration();
 //            // open login form
 //            wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
 //            // fill login form
@@ -39,7 +39,7 @@ public class RegistrationTest extends TestBase{
 //
 //        }
 
-
+        }
     @Test
     public void registrationNegativeTestWrongEmail() {
          int i = (int) (System.currentTimeMillis() / 1000) % 3600;
