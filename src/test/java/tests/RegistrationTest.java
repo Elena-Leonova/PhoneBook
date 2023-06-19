@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -44,9 +45,12 @@ public class RegistrationTest extends TestBase{
     public void registrationNegativeTestWrongEmail() {
          int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         String email = "lena.leonova_" + i + "gmail.com", password = "Mynameislena1!";
+
         app.getUser().openLoginRegistrationForm();
         app.getUser().fillLoginRegistrationForm(email,password);
         app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isErrorMessageFormat());
+        Assert.assertTrue(app.getUser().isAlertPresent());
 
     }
 
