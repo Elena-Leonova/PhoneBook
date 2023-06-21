@@ -1,5 +1,6 @@
 package tests;
 
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,9 +17,10 @@ public class RegistrationTest extends TestBase{
         @Test
         public void registrationPositiveTest() {
             int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-            String email = "lena.postrash" + i + "@gmail.com", password = "Mynameislena1!";
+            //String email = "lena.postrash" + i + "@gmail.com", password = "Mynameislena1!";
+            User user = new User().withEmail("lena.postrash" + i + "@gmail.com").withPassword("Mynameislena1!");
             app.getUser().openLoginRegistrationForm();
-            app.getUser().fillLoginRegistrationForm(email, password);
+            app.getUser().fillLoginRegistrationForm(user);
             app.getUser().submitRegistration();
 //            // open login form
 //            wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
@@ -44,12 +46,12 @@ public class RegistrationTest extends TestBase{
     @Test
     public void registrationNegativeTestWrongEmail() {
          int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-        String email = "lena.leonova_" + i + "gmail.com", password = "Mynameislena1!";
-
+//        String email = "lena.leonova_" + i + "gmail.com", password = "Mynameislena1!";
+        User user = new User().withEmail("lena.leonova_" + i + "gmail.com").withPassword("Mynameislena1!");
         app.getUser().openLoginRegistrationForm();
-        app.getUser().fillLoginRegistrationForm(email,password);
+        app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitRegistration();
-        Assert.assertTrue(app.getUser().isErrorMessageFormat());
+        Assert.assertTrue(app.getUser().isErrorMessageFormatRegistration());
         Assert.assertTrue(app.getUser().isAlertPresent());
 
     }
@@ -57,10 +59,13 @@ public class RegistrationTest extends TestBase{
     @Test
     public void registrationNegativeTestWrongPassword(){
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-          String email = "lena.postrash" + i + "@gmail.com" , password = "lena" ;
+//          String email = "lena.postrash" + i + "@gmail.com" , password = "lena" ;
+          User user = new User().withEmail("lena.postrash" + i + "@gmail.com").withPassword("lena");
         app.getUser().openLoginRegistrationForm();
-        app.getUser().fillLoginRegistrationForm(email,password);
+        app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isErrorMessageFormatRegistration());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
 
