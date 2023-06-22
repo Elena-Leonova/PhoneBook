@@ -25,11 +25,12 @@ public class loginTest extends TestBase {
 
     @Test
     public void loginPositiveTest() {
-        // String email = "lena.postrash@gmail.com", password = "Mynameislena1!";
-        User user = new User().withEmail("lena.postrash@gmail.com").withPassword("Mynameislena1!");
+         String email = "lena.postrash@gmail.com", password = "Mynameislena1!";
+        User user = new User().withEmail(email).withPassword(password);
         app.getUser().openLoginRegistrationForm();
         app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitLogin();
+        Assert.assertTrue(app.getUser().isLogged());
     }
 
 
@@ -56,9 +57,9 @@ public class loginTest extends TestBase {
 
     @Test
     public void loginNegativeTestWrongEmail() {
-       // String email = "lena.postrashgmail.com", password = "Mynameislena1!";
+        String email = "lena.postrashgmail.com", password = "Mynameislena1!";
         // int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-        User user = new User().withEmail("lena.postrashgmail.com").withPassword("Mynameislena1!");
+        User user = new User().withEmail(email).withPassword(password);
         // open login form
         //wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
         //click(By.xpath("//*[text()='LOGIN']"));
