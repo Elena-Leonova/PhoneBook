@@ -17,8 +17,13 @@ public class RegistrationTest extends TestBase{
         @Test
         public void registrationPositiveTest() {
             int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-            //String email = "lena.postrash" + i + "@gmail.com", password = "Mynameislena1!";
-            User user = new User().withEmail("lena.postrash" + i + "@gmail.com").withPassword("Mynameislena1!");
+            String email = "lena.postrash" + i + "@gmail.com", password = "Mynameislena1!";
+           // User user = new User().withEmail(email).withPassword(password);
+
+            User user = User.builder()
+                    .email(email)
+                    .password(password)
+                    .build();
             app.getUser().openLoginRegistrationForm();
             app.getUser().fillLoginRegistrationForm(user);
             app.getUser().submitRegistration();
