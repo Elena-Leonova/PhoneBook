@@ -1,11 +1,13 @@
 package tests;
 
+import manager.NgListener;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import javax.jws.soap.SOAPBinding;
+@Listeners(NgListener.class)
 
 public class loginTest extends TestBase {
 //    WebDriver wd;
@@ -26,11 +28,11 @@ public class loginTest extends TestBase {
     @Test
     public void loginPositiveTest() {
          String email = "lena.postrash@gmail.com", password = "Mynameislena1!";
-       // User user = new User().withEmail(email).withPassword(password);
-        User user = User.builder()
-                .email(email)
-                .password(password)
-                .build();
+       User user = new User().withEmail(email).withPassword(password);
+//        User user = User.builder()
+//                .email(email)
+//                .password(password)
+//                .build();
         app.getUser().openLoginRegistrationForm();
         app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitLogin();
