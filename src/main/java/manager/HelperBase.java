@@ -52,4 +52,7 @@ public class HelperBase {
 
     }
 
+    public String getText(By locator){
+        return wd.findElement(locator).getText();
+    }
 }

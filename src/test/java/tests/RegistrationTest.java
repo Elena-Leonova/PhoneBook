@@ -27,6 +27,7 @@ public class RegistrationTest extends TestBase{
             app.getUser().openLoginRegistrationForm();
             app.getUser().fillLoginRegistrationForm(user);
             app.getUser().submitRegistration();
+         //   Assert.assertTrue(wd.findElements(By.xpath("//a[@href='/add']")).size() > 0);
 //            // open login form
 //            wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
 //            // fill login form
@@ -60,6 +61,9 @@ public class RegistrationTest extends TestBase{
         Assert.assertTrue(app.getUser().isAlertPresent());
 
     }
+
+
+  //  @Test void registrationPositive
 
     @Test
     public void registrationNegativeTestWrongPassword(){
